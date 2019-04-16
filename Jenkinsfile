@@ -1,3 +1,21 @@
-node('ssh') {
-   checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], gitTool: 'TestGit', submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/ercanales/hello-world.git']]])
+pipeline {
+    agent none
+    parameters {
+        string(name: 'environment', defaultValue: 'qa', description: 'Backend environment target. Can be dev, qa, or prod.')
+        string(name: 'password', defaultValue: '', description: 'Password for unlocking keychain.')
+    }
+    stages {
+        stage("Build") {
+            agent any
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage("Upload to S3") {
+            agent any
+            steps {
+                echo 'Hello World2'
+            }
+        }
+    }
 }
