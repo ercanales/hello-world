@@ -8,7 +8,7 @@ pipeline {
         stage("Build") {
             agent any
             steps {
-                echo 'Hello World'
+                echo 'Hello WorldP'
             }
         }
         stage("Upload to S3") {
