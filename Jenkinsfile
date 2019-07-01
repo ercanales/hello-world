@@ -10,8 +10,8 @@ pipeline {
             steps {
                 script {
                     model = readMavenPom file: 'pom.xml' 
-                    value = model.dependencies.dependency.groupId
-                    echo value
+                    //value = model.dependencies.dependency.groupId
+                    echo model.dump()
                 }
             }
         }
