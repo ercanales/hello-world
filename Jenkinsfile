@@ -8,7 +8,9 @@ pipeline {
         stage("Build") {
             agent any
             steps {
-                echo 'Hello World'
+                model = readMavenPom file: 'pom.xml' 
+                value = model.version
+                echo value
             }
         }
         stage("Upload to S3") {
