@@ -9,9 +9,10 @@ pipeline {
             agent any
             steps {
                 script {
-                    model = readMavenPom file: 'pom.xml' 
-                    //value = model.dependencies.dependency.groupId
+                    model = readMavenPom file: 'pom.xml'
                     echo model.dump()
+                    value = model.dependencies['dependency.groupId']
+                    echo value
                 }
             }
         }
